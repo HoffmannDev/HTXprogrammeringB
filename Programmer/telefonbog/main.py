@@ -39,14 +39,14 @@ class listFrame(gui.listFrame):
         cur.execute(sql)
         rows = cur.fetchall()
         for row in rows:
-            self.m_listBox1.Append(row[0] + ", " + row[1] + "," + row[2] + ", " + row[3] + ", " + row[4])
+            self.m_listBox1.Append(row[0] + ", " + row[1] + ", " + str(row[2]) + ", " + str(row[3]) + ", " + str(row[4]))
 
 class nyKontakt(gui.nyKontakt):
     def __init__(self, parent):
         gui.nyKontakt.__init__(self, parent)
 
     def gem_kontakt(self, event):
-        sql ="INSERT INTO telefonbog (fNavn,eNavn,tlf,adr,postnr) VALUES ('"
+        sql = "INSERT INTO telefonbog (fNavn,eNavn,tlf,adr,postnr) VALUES ('"
         sql += self.fNavn_felt.GetValue()+"','"
         sql += self.eNavn_felt.GetValue()+"','"
         sql += self.tlf_felt.GetValue()+"','"
