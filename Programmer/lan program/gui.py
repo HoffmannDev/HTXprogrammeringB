@@ -72,10 +72,51 @@ class orderWindow ( wx.Frame ):
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 
+		bSizer3 = wx.BoxSizer( wx.VERTICAL )
+
+
+		bSizer3.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+		bSizer4 = wx.BoxSizer( wx.HORIZONTAL )
+
+
+		bSizer4.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+		self.m_staticText1 = wx.StaticText( self, wx.ID_ANY, u"Name", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText1.Wrap( -1 )
+
+		bSizer4.Add( self.m_staticText1, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+
+		self.m_textCtrl1 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer4.Add( self.m_textCtrl1, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+
+
+		bSizer4.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+
+		bSizer3.Add( bSizer4, 1, wx.EXPAND, 5 )
+
+		self.placeOrderBtn = wx.Button( self, wx.ID_ANY, u"Place Order", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer3.Add( self.placeOrderBtn, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+
+
+		bSizer3.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+
+		self.SetSizer( bSizer3 )
+		self.Layout()
 
 		self.Centre( wx.BOTH )
 
+		# Connect Events
+		self.placeOrderBtn.Bind( wx.EVT_BUTTON, self.placeOrder )
+
 	def __del__( self ):
 		pass
+
+
+	# Virtual event handlers, overide them in your derived class
+	def placeOrder( self, event ):
+		event.Skip()
 
 
