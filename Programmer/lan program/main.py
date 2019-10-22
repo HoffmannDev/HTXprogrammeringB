@@ -1,6 +1,10 @@
 import wx
 import gui
-import pickle
+import sql
+
+con = None
+con = lite.connect('deltagere.db')
+cur = con.cursor()
 
 class mainFrame(gui.mainFrame):
 	def __init__(self, parent):
@@ -15,11 +19,14 @@ class orderWindow(gui.orderWindow):
 		gui.orderWindow.__init__(self, parent)
 
 	def placeOrder(self, event):
-		pass
+		sql = "INSER INTO deltagere (fnavn) VALUES("
+		sql += self.fnavn_felt.GetValue() + ")"
+		cur.execute(sql)
+		cur.commit()
 		
 
 
 app = wx.App(False)
 frame = mainFrame(None)
 frame.Show(True)
-app.MainLoop() 
+app.MainLoop()
